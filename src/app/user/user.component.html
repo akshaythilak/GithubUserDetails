@@ -1,0 +1,27 @@
+<!-- user.component.html -->
+<div class="user-container" *ngIf="user">
+    <div class="user-details">
+      <img [src]="user.avatar_url" alt="User Avatar" width="100" height="100">
+      <div>
+        <h2>{{ user.name }}</h2>
+        <p>{{ user.bio }}</p>
+        <p>Number of repositories: {{ repos.length }}</p>
+      </div>
+    </div>
+  
+    <h3>Repositories:</h3>
+    <div class="repo-container">
+      <div *ngFor="let repo of displayedRepos" class="repo-box">
+        <p class="repo-name">{{ repo.name }}</p>
+        <p class="repo-description">{{ repo.description }}</p>
+      </div>
+    </div>
+  
+    <!-- Pagination -->
+    <div class="pagination">
+      <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+      <span>{{ currentPage }} / {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+    </div>
+  </div>
+  

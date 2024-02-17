@@ -1,0 +1,15 @@
+<!-- login.component.html -->
+<div>
+    <form #searchForm="ngForm" (ngSubmit)="search(searchForm)">
+      <label for="searchQuery">Username:</label>
+      <input type="text" id="searchQuery" name="searchQuery" ngModel required minlength="3" #searchQuery="ngModel" />
+  
+      <div *ngIf="searchForm.submitted && searchQuery.invalid">
+        <div *ngIf="searchQuery.hasError('required')">Username is required.</div>
+        <div *ngIf="searchQuery.hasError('minlength')">Username must be at least 3 characters.</div>
+      </div>
+  
+      <button type="submit" [disabled]="searchForm.invalid">Login</button>
+    </form>
+  </div>
+  
